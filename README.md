@@ -15,6 +15,8 @@ App.js:9 Component-A A-1 with inline declaration props
 - Functional Component === React.Component.
 - To avoid use inline declaration props in your creative component of react, it's always re-render when its parent component re-render.
 
+![Alt text](https://raw.githubusercontent.com/scott1028/react-optimize-study/master/pure_component.png "pure_component")
+
 ## Below are original create-react-app's README.md
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
