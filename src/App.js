@@ -13,6 +13,7 @@ class A extends Component {
   }
 }
 
+// Excellent Resoluation
 // will no re-render when parent re-rendered, when update-coming view equal current view. (good performance) 
 class B extends PureComponent {
   render() {
@@ -41,6 +42,14 @@ class Button2 extends Component {
   }
 }
 
+// As the result, you can think it a React.Component, this is not a React.PureCompoent.
+const Button3 = props => {
+  console.log('FunctionalComponent_Button3', props.title);
+  return (
+    <button onClick={props.onClick}>Button3</button>
+  )
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -62,6 +71,7 @@ class App extends Component {
             Never re-render whatever parent re-renders.
           */}
           <Button onClick={this.onClick} title="Button-1 with pure reference props" />
+          <Button3 onClick={this.onClick} title="Button-3 with pure reference props" />
           {/*
             Button-2 will be re-render whatevery the upcoming view of Button is equal with current view, because you set a declaration "() => {}" as a prop!!
           */}
