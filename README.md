@@ -1,3 +1,22 @@
+## Experimentation Result
+
+- Console.logt output below
+
+```
+FunctionalComponent_Button3 Button-3 with pure reference props
+App.js:29 PureComponent_Button Button-2 with inline declaration props
+App.js:38 Component_Button2 Button2-1 with pure reference props
+App.js:9 Component-A A-1 with inline declaration props
+```
+
+#### Consideration
+
+- React.PureCompoent has better performance.
+- Functional Component === React.Component.
+- To avoid use inline declaration props in your creative component of react, it's always re-render when its parent component re-render.
+
+## Below are original create-react-app's README.md
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
