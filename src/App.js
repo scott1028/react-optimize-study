@@ -50,6 +50,34 @@ const Button3 = props => {
   )
 }
 
+// Test componentWillRecieveProps handler
+class NestedWrapper extends Component {
+  componentWillReceiveProps(nextPorps) {
+    // test result: always trigger if parent component re-render
+    console.log(nextPorps);
+  }
+  render() {
+    return (
+      <div>{this.props.title}</div>
+    )
+  }
+}
+
+class Wrapper extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.setState({ title: JSON.stringify(new Date)})}>Click</button>
+        <NestedWrapper title={this.state.title} />
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -92,6 +120,10 @@ class App extends Component {
           Pure value will not cause performance issue, when you use React.PureComponent.
         */}
         <B value={this.state.value} title="B-1 with pure value props" />
+
+        <hr />
+
+        <Wrapper />
       </div>
     );
   }
