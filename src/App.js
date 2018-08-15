@@ -78,6 +78,31 @@ class Wrapper extends Component {
   }
 }
 
+class TestDerivedStateFromProps extends Component {
+  static getDerivedStateFromProps(props, state) {
+    console.log(`\ngetDerivedStateFromProps invoked at ${new Date().getTime()}`);
+    console.log(props, state);
+    // getDerivedStateFromProps can not be a async function
+    // var updateValues = await Promise.resolve({ random: parseInt(Math.random() * 100) });
+    // console.log(updateValues);
+    return {
+      // ...updateValues,
+      ...state,
+      ...props,
+    };
+  }
+
+  render() {
+    console.log(`render invoked at ${new Date().getTime()}\n\n`);
+    return (
+      <div>
+        <div>Props: { JSON.stringify(this.props) }</div>
+        <div>State: { JSON.stringify(this.state) }</div>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -124,6 +149,9 @@ class App extends Component {
         <hr />
 
         <Wrapper />
+
+        <button onClick={() => this.setState({})}>Do render</button>
+        <TestDerivedStateFromProps timestamp={new Date().getTime()} />
       </div>
     );
   }
